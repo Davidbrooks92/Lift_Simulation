@@ -15,100 +15,120 @@ using std::cout;
 using std::endl;
 using std::thread;
 
-class Motor {
-public:
-    Motor motor();
-    void move_up(){
-
-    };
-    int move_down(int x){
-
-    };
-    void stop(){
-
-    };
-private:
+class Button_Panel;
+class Elevator;
 
 
-};
 
 class Buttons {
-
-};
-
-class Floor_Buttons: private Buttons{
-
-};
-
-class Elevator_Buttons: private Buttons{
 public:
-    Elevator_Buttons(int x){
+    virtual int button_push() =0;
+};
+class Elevator_Buttons{
+public:
+    explicit Elevator_Buttons(int x){
         destination = x;
     };
-private:
-    int send_elevator(int destination) : current_floor {
+
+    static void send_elevator(int destination, int current_floor)  {
         if(destination < current_floor){
             int x = current_floor - destination;
-            motor.move_down(x);
+
         } else if(destination > current_floor){
-            motor.move_up();
+
         }
     };
     int destination;
+    int current_floor{};
 };
-class Stop_Button: private Elevator_Buttons{
-private:
-    void stop_elevator();
+class Elevator_Button_Panel{
+public:
+    explicit Elevator_Button_Panel(){
+        Elevator_Buttons button_0(0);
+        Elevator_Buttons button_1(1);
+        Elevator_Buttons button_2(2);
+        Elevator_Buttons button_3(3);
+    }
 };
 
 class Elevator {
 public:
-    Elevator(){}
-private:
-    int current_floor;
-    Elevator_Buttons zero_button;
-    Elevator_Buttons one_button;
-    Elevator_Buttons two_button;
-    Elevator_Buttons three_button;
-    Elevator_Buttons stop_button;
-    Motor motor;
+    Elevator() = default;
     int destination;
-    int button_push(Elevator_Buttons x){
-        if(x = zero_button)
-        zero_button.send_elevator(destination): current_floor;
-    };
-    void operator+(Elevator_Buttons stop_button){
-        motor.stop();
-    };
+    int current_floor;
+    Elevator_Button_Panel e_button_panel;
 
-
+     static void _send(int destination, int current_floor) {
+        if (destination < current_floor) {
+            for (destination; destination < current_floor; destination--) {
+                cout << "Elevator is on floor: " + std::to_string(current_floor);
+            }
+        } else if (destination > current_floor) {
+            for (destination; destination > current_floor; destination++) {
+                cout << "Elevator is on floor: " + std::to_string(current_floor);
+            }
+        } else {
+            cout << "Elevator has reached it's destination";
+        }
+    }
+      void _request(int i) {
+        if (current_floor < i) {
+            for (current_floor; current_floor < i; current_floor--) {
+                cout << "Elevator is on floor: " + std::to_string(current_floor);
+            }
+        } else if (current_floor > i) {
+            for (current_floor; current_floor > i; current_floor++) {
+                cout << "Elevator is on floor: " + std::to_string(current_floor) + " \n";
+            }
+        } else {
+            cout << "Elevator has reached it's i";
+        }
+    }
 
 };
 
+
+
+
+class Floor_Buttons {
+public:
+    Elevator& elevator;
+    explicit Floor_Buttons(int x,Elevator &elevator1): elevator{elevator1}{
+        current_floor = x;
+    };
+    void push(int x) {
+        elevator._request(current_floor);
+    }
+private:
+    int current_floor;
+    };
+
+
+class Button_Panel{
+public:
+    explicit Button_Panel(int x, Elevator& elevator): up_button(x, elevator), down_button(x, elevator){};
+    Floor_Buttons down_button;
+    Floor_Buttons up_button;
+};
 
 class Floors {
 public:
-    explicit Floors(){
-    }
-
-    private:
-    bool doors = false;
+    Floors(int x, Elevator& elevator){
+        current_floor = x;
+        Button_Panel buttonPanel(current_floor, elevator);
+    };
+    int current_floor;
 };
 
-
 class Building {
-
 public:
-    explicit Building() {
-        int x;
-        std::cout << "Enter how many floors the building has";
-        std::cin >> x;
-        num_floors = x;
-        Floors floor[x];
+    Building() {
+        Elevator elevator;
+        auto f1 = Floors(0, elevator);
+        auto f2 = Floors(1, elevator);
+        auto f3 = Floors(2, elevator);
+        auto f4 = Floors(3, elevator);
     }
-private:
-    int num_floors;
-    Elevator elevator;
 };
 
 
@@ -118,5 +138,6 @@ private:
 
 
 int main(){
-Building building();
+    Building building;
+    Button_Panel:buttonPanel;
 };
