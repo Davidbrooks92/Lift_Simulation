@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/untitled.dir/lift_simulation.cpp.o CMakeFiles/untitled.dir/testing_lift.cpp.o -o untitled  _deps/catch2-build/src/libCatch2Main.a _deps/catch2-build/src/libCatch2.a 
