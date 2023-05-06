@@ -5,6 +5,7 @@
 #include <thread>
 #include <queue>
 #include <string>
+#include "lift_simulation.hpp"
 
 using std::string;
 using std::mutex;
@@ -15,13 +16,14 @@ using std::cout;
 using std::endl;
 using std::thread;
 
+class Building;
 class Button_Panel;
 class Elevator;
 
 
 class Buttons {
 public:
-    virtual int button_push() =0;
+    virtual void button_push() =0;
 };
 
 class Elevator_Buttons: private Buttons{
@@ -30,9 +32,8 @@ public:
     explicit Elevator_Buttons(int x, Elevator &elevator): elevator{elevator}{
         destination = x;
     }
-    int button_push(){
-        elevator._send(destination, current_floor);
-        return 0;
+    void button_push(){
+
     }
 
 
@@ -43,32 +44,37 @@ private:
 
 class Elevator_Button_Panel{
 public:
-    explicit Elevator_Button_Panel(int x, Elevator &elevator): button_0(1, elevator), button_1(2, elevator), button_2(3, elevator),
-                                                        button_3(4, elevator){};
+    explicit Elevator_Button_Panel(int x, Elevator &elevator): button_0(1, elevator),
+    button_1(2, elevator), button_2(3, elevator), button_3(4, elevator){
+        current_floor = x;
+
+    };
         Elevator_Buttons button_0;
         Elevator_Buttons button_1;
         Elevator_Buttons button_2;
         Elevator_Buttons button_3;
+private:
+    int current_floor;
 
 };
 
-class Elevator {
+class Elevator{
 public:
-    Elevator(int x, Elevator &elevator){
+    Elevator_Button_Panel e_button_panel;
+
+    Elevator(int x, Elevator &elevator): e_button_panel(x, elevator){
         current_floor = x;
-        Elevator_Button_Panel e_button_panel(x, elevator);
+
     };
 
-
-
-     void _send(int destination, int current_floor) {
-        if (destination < current_floor) {
-            for (destination; destination < current_floor; destination--) {
-                cout << "Elevator is on floor: " + std::to_string(current_floor);
+     void send_(int x, int y) {
+        if (x < y) {
+            for (x; x < y; x--) {
+                cout << "Elevator is on floor: " + std::to_string(y);
             }
-        } else if (destination > current_floor) {
-            for (destination; destination > current_floor; destination++) {
-                cout << "Elevator is on floor: " + std::to_string(current_floor);
+        } else if (x > y) {
+            for (x; x > y; x++) {
+                cout << "Elevator is on floor: " + std::to_string(y);
             }
         } else {
             cout << "Elevator has reached it's destination";
@@ -84,7 +90,7 @@ public:
                 cout << "Elevator is on floor: " + std::to_string(current_floor) + " \n";
             }
         } else {
-            cout << "Elevator has reached it's i";
+            cout << "Elevator has reached it's destination\n";
         }
     }
 private:
@@ -98,9 +104,8 @@ public:
     explicit Floor_Buttons(int x,Elevator &elevator): elevator{elevator}{
         current_floor = x;
     };
-    int button_push(){
+    void button_push(){
         elevator._request(current_floor);
-        return 0;
     }
 private:
     int current_floor;
@@ -111,29 +116,48 @@ public:
     explicit Button_Panel(int x, Elevator& elevator): up_button(x, elevator), down_button(x, elevator){};
     Floor_Buttons down_button;
     Floor_Buttons up_button;
+
+    void up_button_push(){
+        up_button.button_push();
+    }
+
+    void down_button_push(){
+        down_button.button_push();
+    }
 };
 
 class Floors {
 public:
-    Floors(int x, Elevator& elevator){
+    Floors(int x, Elevator& elevator): buttonPanel(x, elevator){
         current_floor = x;
-        Button_Panel buttonPanel(current_floor, elevator);
     };
+    Button_Panel buttonPanel;
     int current_floor;
+    void up_button_push(){
+        buttonPanel.up_button_push();
+    }
+    void down_button_push(){
+        buttonPanel.down_button_push();
+    }
 };
 
 class Building {
 public:
-    Elevator &elevator;
-    explicit Building(Elevator &elevator): elevator{elevator} {
 
-        auto f1 = Floors(0, elevator);
-        auto f2 = Floors(1, elevator);
-        auto f3 = Floors(2, elevator);
-        auto f4 = Floors(3, elevator);
+    explicit Building(Elevator &elevator): f1{0,elevator},
+    f2{1,elevator}, f3{2,elevator}, f4{3,elevator} {
     }
+    Floors f1;
+    Floors f2;
+    Floors f3;
+    Floors f4;
+    void down_button_push(){
+        f1.down_button_push();
+    }
+    void up_button_push(){
+        f1.up_button_push();
+    }
+
 };
 
-int main(){
-    Building building();
-};
+

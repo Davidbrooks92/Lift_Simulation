@@ -1,1 +1,7 @@
-set( untitled_TESTS)
+add_test( [==[Initialisation test]==] C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/untitled.exe [==[Initialisation test]==]  )
+set_tests_properties( [==[Initialisation test]==] PROPERTIES WORKING_DIRECTORY C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug)
+add_test( Building C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/untitled.exe Building  )
+set_tests_properties( Building PROPERTIES WORKING_DIRECTORY C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug)
+add_test( start C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/untitled.exe start  )
+set_tests_properties( start PROPERTIES WORKING_DIRECTORY C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug)
+set( untitled_TESTS [==[Initialisation test]==] Building start)
