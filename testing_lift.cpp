@@ -1,4 +1,3 @@
-#include "lift_simulation.hpp"
 #include "lift_simulation.cpp"
 #include <catch2/catch_test_macros.hpp>
 
@@ -7,8 +6,7 @@ TEST_CASE("Initialisation test"){
 }
 
 TEST_CASE("Building"){
-    Building building(Elevator &elevator);
-    Elevator elevator(0, elevator);
+    Elevator elevator(0);
     Floors f1(0, elevator);
     Floors f2(1, elevator);
     Floors f3(2, elevator);
@@ -19,9 +17,14 @@ TEST_CASE("Building"){
     REQUIRE(f4.current_floor == 3);
 }
 
-TEST_CASE("start"){
-    Elevator elevator(0, elevator);
+TEST_CASE("Call the elevator"){
+    Elevator elevator(0);
     Building building(elevator);
-    building.down_button_push();
-    building.up_button_push();
+    building.f1.up_button_push(elevator);
+}
+
+TEST_CASE("Call then send"){
+    Elevator elevator(0);
+    Building building(elevator);
+    building.f1.up_button_push(elevator);
 }
