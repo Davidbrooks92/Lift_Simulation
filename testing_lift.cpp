@@ -28,3 +28,7 @@ TEST_CASE("Call then send"){
     Building building(elevator);
     building.f1.up_button_push(elevator);
 }
+
+TEST_CASE("test"){
+
+}
