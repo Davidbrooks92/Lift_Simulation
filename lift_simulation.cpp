@@ -15,7 +15,7 @@ using std::endl;
 
 
 void Elevator_Buttons::e_push(int x , int y, Elevator& elevator){
-    elevator.send_(x, y);
+    elevator.send_(x, y, elevator);
 }
 void Floor_Buttons::push(int current_floor, Elevator& elevator){
 
@@ -47,29 +47,34 @@ void Elevator_Button_Panel::button_3_push(int destination,int current_floor, Ele
     button_3.e_push(destination, current_floor, elevator);
 }
 
-void Elevator::send_(int x, int y) {
-    if (x < y) {
-        for (x; x < y; x--) {
-            cout << "Elevator is on floor: " + std::to_string(y);
+void Elevator::send_(int destination, int current_floor, Elevator& elevator) {
+    cout << current_floor << " " << elevator.current_floor << endl;
+    cout << destination << " " << elevator.current_floor << endl;
+    if (destination < elevator.current_floor) {
+        for (elevator.current_floor; destination < elevator.current_floor; elevator.current_floor--) {
+            cout << "Elevator is on floor: " + std::to_string(elevator.current_floor) + " \n";
         }
-    } else if (x > y) {
-        for (x; x > y; x++) {
-            cout << "Elevator is on floor: " + std::to_string(y);
+        cout << "Elevator has reached it's destination on floor: " + std::to_string(elevator.current_floor) + " \n";
+    } else if (destination > elevator.current_floor) {
+        for (elevator.current_floor; destination > elevator.current_floor; current_floor++) {
+            cout << "Elevator is on floor: " + std::to_string(elevator.current_floor) + " \n";
         }
-    } else {
-        cout << "Elevator has reached it's destination";
-    }
-}
-void Elevator::_request(int i, Elevator& elevator) {
-    cout << i << " " << elevator.current_floor << endl;
-    if (elevator.current_floor < i) {
 
-        for (elevator.current_floor; elevator.current_floor < i; elevator.current_floor++) {
+    } else if(destination == elevator.current_floor){
+        cout << "Elevator has reached it's destination on floor: " + std::to_string(elevator.current_floor) + " \n";
+    }
+
+}
+void Elevator::_request(int destination, Elevator& elevator) {
+    cout << destination << " " << elevator.current_floor << endl;
+    if (elevator.current_floor < destination) {
+
+        for (elevator.current_floor; elevator.current_floor < destination; elevator.current_floor++) {
             cout << "Elevator is on floor:" + std::to_string(elevator.current_floor) + " \n";
         }
         cout << "Elevator has reached it's destination on floor: " + std::to_string(elevator.current_floor) + " \n";
-    } else if (elevator.current_floor > i) {
-        for (elevator.current_floor; elevator.current_floor > i; elevator.current_floor--) {
+    } else if (elevator.current_floor > destination) {
+        for (elevator.current_floor; elevator.current_floor > destination; elevator.current_floor--) {
             cout << "Elevator is on floor:" + std::to_string(elevator.current_floor) + " \n";
         }
         cout << "Elevator has reached it's destination on floor: " + std::to_string(elevator.current_floor) + " \n";

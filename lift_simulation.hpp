@@ -105,7 +105,7 @@ public:
 
 
     };
-    void send_(int x, int y);
+    void send_(int x, int y, Elevator& elevator);
     void _request(int i, Elevator& elevator);
 
 };
