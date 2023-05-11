@@ -41,46 +41,46 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target untitled
+# Object build statements for EXECUTABLE target lifttest
 
 
 #############################################
-# Order-only phony target for untitled
+# Order-only phony target for lifttest
 
-build cmake_object_order_depends_target_untitled: phony || cmake_object_order_depends_target_Catch2 cmake_object_order_depends_target_Catch2WithMain
+build cmake_object_order_depends_target_lifttest: phony || cmake_object_order_depends_target_Catch2 cmake_object_order_depends_target_Catch2WithMain
 
-build CMakeFiles/untitled.dir/lift_simulation.cpp.obj: CXX_COMPILER__untitled_Debug C$:/Users/David/CLionProjects/Lift_Simulation/lift_simulation.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles\untitled.dir\lift_simulation.cpp.obj.d
+build CMakeFiles/lifttest.dir/lift_simulation.cpp.obj: CXX_COMPILER__lifttest_Debug C$:/Users/David/CLionProjects/Lift_Simulation/lift_simulation.cpp || cmake_object_order_depends_target_lifttest
+  DEP_FILE = CMakeFiles\lifttest.dir\lift_simulation.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-src/src/catch2/.. -IC:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-build/generated-includes
-  OBJECT_DIR = CMakeFiles\untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled.dir
+  OBJECT_DIR = CMakeFiles\lifttest.dir
+  OBJECT_FILE_DIR = CMakeFiles\lifttest.dir
 
-build CMakeFiles/untitled.dir/testing_lift.cpp.obj: CXX_COMPILER__untitled_Debug C$:/Users/David/CLionProjects/Lift_Simulation/testing_lift.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles\untitled.dir\testing_lift.cpp.obj.d
+build CMakeFiles/lifttest.dir/testing_lift.cpp.obj: CXX_COMPILER__lifttest_Debug C$:/Users/David/CLionProjects/Lift_Simulation/testing_lift.cpp || cmake_object_order_depends_target_lifttest
+  DEP_FILE = CMakeFiles\lifttest.dir\testing_lift.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-src/src/catch2/.. -IC:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-build/generated-includes
-  OBJECT_DIR = CMakeFiles\untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled.dir
+  OBJECT_DIR = CMakeFiles\lifttest.dir
+  OBJECT_FILE_DIR = CMakeFiles\lifttest.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target untitled
+# Link build statements for EXECUTABLE target lifttest
 
 
 #############################################
-# Link the executable untitled.exe
+# Link the executable lifttest.exe
 
-build untitled.exe untitled_tests-b12d07c.cmake | ${cmake_ninja_workdir}untitled_tests-b12d07c.cmake: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/lift_simulation.cpp.obj CMakeFiles/untitled.dir/testing_lift.cpp.obj | _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a || _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a
+build lifttest.exe lifttest_tests-b12d07c.cmake | ${cmake_ninja_workdir}lifttest_tests-b12d07c.cmake: CXX_EXECUTABLE_LINKER__lifttest_Debug CMakeFiles/lifttest.dir/lift_simulation.cpp.obj CMakeFiles/lifttest.dir/testing_lift.cpp.obj | _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a || _deps/catch2-build/src/libCatch2Maind.a _deps/catch2-build/src/libCatch2d.a
   FLAGS = -g
   LINK_LIBRARIES = _deps/catch2-build/src/libCatch2Maind.a  _deps/catch2-build/src/libCatch2d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\untitled.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\Users\David\CLionProjects\Lift_Simulation\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -D TEST_TARGET=untitled -D TEST_EXECUTABLE=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/untitled.exe -D TEST_EXECUTOR= -D TEST_WORKING_DIR=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug -D TEST_SPEC= -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_LIST=untitled_TESTS -D TEST_REPORTER= -D TEST_OUTPUT_DIR= -D TEST_OUTPUT_PREFIX= -D TEST_OUTPUT_SUFFIX= -D TEST_DL_PATHS= -D CTEST_FILE=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/untitled_tests-b12d07c.cmake -P C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-src/extras/CatchAddTests.cmake"
+  OBJECT_DIR = CMakeFiles\lifttest.dir
+  POST_BUILD = cmd.exe /C "cd /D C:\Users\David\CLionProjects\Lift_Simulation\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -D TEST_TARGET=lifttest -D TEST_EXECUTABLE=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/lifttest.exe -D TEST_EXECUTOR= -D TEST_WORKING_DIR=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug -D TEST_SPEC= -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_LIST=lifttest_TESTS -D TEST_REPORTER= -D TEST_OUTPUT_DIR= -D TEST_OUTPUT_PREFIX= -D TEST_OUTPUT_SUFFIX= -D TEST_DL_PATHS= -D CTEST_FILE=C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/lifttest_tests-b12d07c.cmake -P C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug/_deps/catch2-src/extras/CatchAddTests.cmake"
   PRE_LINK = cd .
   RESTAT = 1
-  TARGET_FILE = untitled.exe
-  TARGET_IMPLIB = libuntitled.dll.a
-  TARGET_PDB = untitled.exe.dbg
+  TARGET_FILE = lifttest.exe
+  TARGET_IMPLIB = liblifttest.dll.a
+  TARGET_PDB = lifttest.exe.dbg
 
 
 #############################################
@@ -1379,7 +1379,7 @@ build libCatch2Maind.a: phony _deps/catch2-build/src/libCatch2Maind.a
 
 build libCatch2d.a: phony _deps/catch2-build/src/libCatch2d.a
 
-build untitled: phony untitled.exe
+build lifttest: phony lifttest.exe
 
 # =============================================================================
 # Folder targets.
@@ -1389,7 +1389,7 @@ build untitled: phony untitled.exe
 #############################################
 # Folder: C:/Users/David/CLionProjects/Lift_Simulation/cmake-build-debug
 
-build all: phony untitled.exe _deps/catch2-build/all
+build all: phony lifttest.exe _deps/catch2-build/all
 
 # =============================================================================
 

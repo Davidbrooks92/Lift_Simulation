@@ -19,12 +19,12 @@ list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 # alternatively in CMake is installed system wide
 #find_package(Catch2 3 REQUIRED)
 
-add_executable(untitled lift_simulation.cpp lift_simulation.hpp testing_lift.cpp)
+add_executable(lifttest lift_simulation.cpp testing_lift.cpp)
 
 # These tests can use the Catch2-provided main
-target_link_libraries(untitled PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(lifttest PRIVATE Catch2::Catch2WithMain)
 
 # Automatically discover tests
 include(CTest)
 include(Catch)
-catch_discover_tests(untitled)
+catch_discover_tests(lifttest)

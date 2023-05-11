@@ -168,4 +168,5 @@ CMakeFiles/untitled.dir/lift_simulation.cpp.o: \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/bits/stl_heap.h \
- /usr/include/c++/11/bits/stl_queue.h
+ /usr/include/c++/11/bits/stl_queue.h \
+ /mnt/c/users/David/CLionProjects/Lift_Simulation/lift_simulation.hpp

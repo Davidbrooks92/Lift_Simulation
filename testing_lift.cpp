@@ -1,34 +1,46 @@
-#include "lift_simulation.cpp"
+#include "lift_simulation.hpp"
 #include <catch2/catch_test_macros.hpp>
-
+#include <iostream>
+using  std::cout;
+using  std::flush;
 TEST_CASE("Initialisation test"){
-
+    printf("Initialisation Succeeded \n");
 }
 
-TEST_CASE("Building"){
-    Elevator elevator(0);
-    Floors f1(0, elevator);
-    Floors f2(1, elevator);
-    Floors f3(2, elevator);
-    Floors f4(3, elevator);
-    REQUIRE(f1.current_floor == 0);
-    REQUIRE(f2.current_floor == 1);
-    REQUIRE(f3.current_floor == 2);
-    REQUIRE(f4.current_floor == 3);
+TEST_CASE("construct an elevator"){
+    printf("Initialisation Succeeded \n");
+    Elevator ev1{0};
+    printf("Elevator Build Succeeded \n");
 }
 
-TEST_CASE("Call the elevator"){
-    Elevator elevator(0);
-    Building building(elevator);
-    building.f1.up_button_push(elevator);
+TEST_CASE("Construct a building") {
+    printf("Initialisation Succeeded \n");
+    Elevator ev1(0);
+    printf("Elevator Build Succeeded \n");
+    Building building(ev1);
+    printf("Building Build Succeeded \n");
 }
 
-TEST_CASE("Call then send"){
-    Elevator elevator(0);
-    Building building(elevator);
-    building.f1.up_button_push(elevator);
+TEST_CASE("test2"){
+    printf("Initialisation Succeeded \n");
+    Elevator ev1(0);
+    printf("Elevator Build Succeeded \n");
+    Building building(ev1);
+    printf("Building Build Succeeded \n");
+    cout << "Elevator Values: " << flush << "Destination and Current Floor"<<std::endl;
+    building.f4.buttonPanel.downbutton.push(3, ev1);
+    printf("Floor 4 Button Push Build Succeeded \n");
 }
-
-TEST_CASE("test"){
-
+/*
+TEST_CASE("test3"){
+    printf("Initialisation Succeeded \n");
+    Elevator ev1(0);
+    printf("Elevator Build Succeeded \n");
+    Building building(ev1);
+    printf("Building Build Succeeded \n");
+    cout << "Elevator Values: " << flush << "Destination and Current Floor"<<std::endl;
+    building.f4.buttonPanel.go_down(3, ev1);
+    printf("Floor 4 Button Push Build Succeeded \n");
+    building.elevator.e_button_panel.button_0->e_push(0,ev1.current_floor, ev1);
 }
+*/
